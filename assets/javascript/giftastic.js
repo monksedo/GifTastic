@@ -24,13 +24,13 @@ $(document).ready(function () {
       for (let i = 0; i < inputData.length; i++) {
         let addItem = $("<div class='gif'>");
 
-        let rate = inputDate[i].rate;
+        let rate = inputData[i].rate;
         let motionGif = inputData[i].images.fixed_height.url;
         let stillGif = inputData[i].images.fixed_height.url;
         let imgView = $("<img>");
         let pTag = $("</p>").text("Rate: " + rate);
 
-        imgView.attr("src", stillSrc);
+        imgView.attr("src", stillGif);
         imgView.addClass("displayImgs");
         imgView.attr("data-state", "still");
         imgView.attr("data-still", stillGif);
@@ -48,22 +48,38 @@ $(document).ready(function () {
     let addSearch = $("#gifSearch").val().trim();
     searchItem.push(addSearch);
     console.log(searchItem);
-    $("#gifSearch").vale(' ');
+    $("#gifSearch").val(' ');
     showSearchBtn();
   });
 
   function showSearchBtn() {
-    $("#newBtn").empty();
+    $(".newBtn").empty();
     for (var i = 0; i < searchItem.length; i++) {
-      let btn = $('<button class="btn btn-primary">');
-      a.attr("id", "show");
-      a.attr("data-search", searchItem[i]);
-      a.text(searchItem[i]);
-      $("#newBtn").append(btn);
+      let btn = $("<span class='searchItem'>");
+      btn.attr("class", ".searchStr");
+      btn.attr("data-search", searchItem[i]);
+      btn.text(searchItem[i]);
+      $(".newBtn").append(btn);
     }
   }
 
+  showSearchBtn();
 
+  // Click event on button id of show
+  $(document).on("click", ".searchStr", searchItemView);
 
+  // Click on gif to see animation
+  $(document).on("click", ".displayImgs", stopMotionGif);
 
-})
+  // Function 
+  function stopMotionGif() {
+    let gifs = $(this).attr("data-state");
+    if (gifs === "still") {
+      $(this).attr("src", $(this).attr("data-animate"));
+      $(this).attr("data-state", "animate");
+    } else {
+      $(this.attr).attr("src", $(this).attr("data-still"));
+      $(this.attr).attr("data-state", "still");
+    }
+  }
+});
