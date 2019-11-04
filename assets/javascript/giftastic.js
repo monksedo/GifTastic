@@ -28,7 +28,7 @@ $(document).ready(function () {
         let motionGif = inputData[i].images.fixed_height.url;
         let stillGif = inputData[i].images.fixed_height.url;
         let imgView = $("<img>");
-        let pTag = $("<p>").text("Rate: " + rate);
+        let pTag = $("<p>").text("Rated: " + rate);
 
         imgView.attr("src", stillGif);
         imgView.addClass("displayImgs");
