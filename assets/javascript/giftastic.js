@@ -6,7 +6,7 @@ $(document).ready(function () {
   // Dislplay search Items
   function searchItemView() {
 
-    let searchID = $(this).data('search');
+    let searchID = $(this).data("search");
     console.log(searchID);
 
     let searchAPI = "https://api.giphy.com/v1/gifs/search?api_key=ptzjh4nQoBW9XWrxjWosk5kdon70mN48&q=" +
@@ -22,13 +22,13 @@ $(document).ready(function () {
       console.log(inputData);
 
       for (let i = 0; i < inputData.length; i++) {
-        let addItem = $("<div class='gif'>");
+        let addItem = $("<div class='imgGroup'>");
 
-        let rate = inputData[i].rate;
+        let rate = inputData[i].rating;
         let motionGif = inputData[i].images.fixed_height.url;
         let stillGif = inputData[i].images.fixed_height.url;
         let imgView = $("<img>");
-        let pTag = $("</p>").text("Rate: " + rate);
+        let pTag = $("<p>").text("Rate: " + rate);
 
         imgView.attr("src", stillGif);
         imgView.addClass("displayImgs");
@@ -37,7 +37,8 @@ $(document).ready(function () {
         imgView.attr("data-animate", motionGif);
         addItem.append(pTag);
         addItem.append(imgView);
-        $("gifItems").prepend(addItem);
+        $(".gifItems").prepend(addItem);
+        console.log(addItem);
       }
     });
   }
@@ -55,7 +56,7 @@ $(document).ready(function () {
   function showSearchBtn() {
     $(".newBtn").empty();
     for (var i = 0; i < searchItem.length; i++) {
-      let btn = $("<span class='searchItem'>");
+      let btn = $("<span>");
       btn.attr("class", ".searchStr");
       btn.attr("data-search", searchItem[i]);
       btn.text(searchItem[i]);
@@ -65,7 +66,7 @@ $(document).ready(function () {
 
   showSearchBtn();
 
-  // Click event on button id of show
+  // Click search on button id of show search images
   $(document).on("click", ".searchStr", searchItemView);
 
   // Click on gif to see animation
