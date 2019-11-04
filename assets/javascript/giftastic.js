@@ -1,3 +1,6 @@
+///////////////////////////////////////////////////////////////////////////////////////////
+// Begining Code
+
 $(document).ready(function () {
 
   // searchItem Array
@@ -7,19 +10,19 @@ $(document).ready(function () {
   function searchItemView() {
 
     let searchID = $(this).data("search");
-    console.log(searchID);
+    console.log(searchID); // for testing purpose
 
     let searchAPI = "https://api.giphy.com/v1/gifs/search?api_key=ptzjh4nQoBW9XWrxjWosk5kdon70mN48&q=" +
       searchID + "&limit=10&offset=0&rating=G&lang=en";
 
-    console.log(searchAPI);
+    console.log(searchAPI); // for testing purpose
 
     $.ajax({
       url: searchAPI,
       method: "GET"
     }).done(function (str) {
       let inputData = str.data;
-      console.log(inputData);
+      console.log(inputData);  // for testing purpose
 
       for (let i = 0; i < inputData.length; i++) {
         let addItem = $("<div class='imgGroup'>");
@@ -37,14 +40,14 @@ $(document).ready(function () {
         imgView.attr("data-animate", motionGif);
         addItem.append(pTag);
         addItem.append(imgView);
-        console.log(imgView);
+        console.log(imgView); // for testing purpose
         $(".gifItems").prepend(addItem);
-        console.log(addItem);
+        console.log(addItem); // for testing purpose
       }
     });
   }
 
-  // Add search keyword and search button to the existing list
+  // Add search keyword and button to the existing list
   $("#searchBtn").on("click", function (e) {
     e.preventDefault();
     let addSearch = $("#gifSearch").val().trim();
