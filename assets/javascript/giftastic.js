@@ -37,27 +37,30 @@ $(document).ready(function () {
         imgView.attr("data-animate", motionGif);
         addItem.append(pTag);
         addItem.append(imgView);
+        console.log(imgView);
         $(".gifItems").prepend(addItem);
         console.log(addItem);
       }
     });
   }
 
-  // Submit
+  // Add search keyword and search button to the existing list
   $("#searchBtn").on("click", function (e) {
     e.preventDefault();
     let addSearch = $("#gifSearch").val().trim();
     searchItem.push(addSearch);
     console.log(searchItem);
-    $("#gifSearch").val(' ');
+    $("#gifSearch").val(" ");
     showSearchBtn();
   });
 
+  // Display the new search button
   function showSearchBtn() {
     $(".newBtn").empty();
     for (var i = 0; i < searchItem.length; i++) {
       let btn = $("<span>");
-      btn.attr("class", ".searchStr");
+      console.log(btn);
+      btn.attr("class", "searchStr");
       btn.attr("data-search", searchItem[i]);
       btn.text(searchItem[i]);
       $(".newBtn").append(btn);
