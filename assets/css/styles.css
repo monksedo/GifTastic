@@ -33,7 +33,7 @@ body {
 
 .header {
   width: 100%;
-  height: 80px;
+  height: 90px;
   background-color: #e9e9e9d5;
   text-align: center;
 }
@@ -69,6 +69,18 @@ span {
   border: none;
   border-radius: 3px;
   box-shadow: 0.1rem 0.2rem 1rem #838383d5;
+}
+
+span:hover,
+#searchBtn:hover {
+   color: #f19845d5;
+   box-shadow: 1px 1px 1rem #6d6c6c;
+}
+
+span:active,
+#searchBtn:active {
+   box-shadow: .5px .5px .5rem #666666;
+   transform: translateY(3px);
 }
 
 input {

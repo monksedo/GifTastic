@@ -50,7 +50,7 @@ $(document).ready(function () {
     let addSearch = $("#gifSearch").val().trim();
     searchItem.push(addSearch);
     console.log(searchItem);
-    $("#gifSearch").val(" ");
+    $("#gifSearch").val("");
     showSearchBtn();
   });
 
