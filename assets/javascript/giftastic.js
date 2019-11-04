@@ -12,8 +12,7 @@ $(document).ready(function () {
     let searchID = $(this).data("search");
     console.log(searchID); // for testing purpose
 
-    let searchAPI = "https://api.giphy.com/v1/gifs/search?api_key=ptzjh4nQoBW9XWrxjWosk5kdon70mN48&q=" +
-      searchID + "&limit=10&offset=0&rating=G&lang=en";
+    var searchAPI = "https://api.giphy.com/v1/gifs/search?api_key=ptzjh4nQoBW9XWrxjWosk5kdon70mN48&q=" + searchID + "&limit=10&offset=0&rating=G&lang=en";
 
     console.log(searchAPI); // for testing purpose
 
@@ -27,11 +26,11 @@ $(document).ready(function () {
       for (let i = 0; i < inputData.length; i++) {
         let addItem = $("<div class='imgGroup'>");
 
-        let rate = inputData[i].rating;
+        let rated = inputData[i].rating;
         let motionGif = inputData[i].images.fixed_height.url;
         let stillGif = inputData[i].images.fixed_height.url;
         let imgView = $("<img>");
-        let pTag = $("<p>").text("Rated: " + rate.toUpperCase());
+        let pTag = $("<p>").text("Rated: " + rated.toUpperCase());
 
         imgView.attr("src", stillGif);
         imgView.addClass("displayImgs");
@@ -40,9 +39,7 @@ $(document).ready(function () {
         imgView.attr("data-animate", motionGif);
         addItem.append(pTag);
         addItem.append(imgView);
-        console.log(imgView); // for testing purpose
         $(".gifItems").prepend(addItem);
-        console.log(addItem); // for testing purpose
       }
     });
   }
@@ -52,7 +49,7 @@ $(document).ready(function () {
     e.preventDefault();
     let addSearch = $("#gifSearch").val().trim();
     searchItem.push(addSearch);
-    console.log(searchItem);
+    console.log(searchItem); // for testing purpose
     $("#gifSearch").val("");
     showSearchBtn();
   });
@@ -60,9 +57,9 @@ $(document).ready(function () {
   // Display the new search button
   function showSearchBtn() {
     $(".newBtn").empty();
-    for (var i = 0; i < searchItem.length; i++) {
+    for (let i = 0; i < searchItem.length; i++) {
       let btn = $("<span>");
-      console.log(btn);
+      console.log(btn); // for testing purpose
       btn.attr("class", "searchStr");
       btn.attr("data-search", searchItem[i]);
       btn.text(searchItem[i]);
@@ -80,8 +77,8 @@ $(document).ready(function () {
 
   // Function 
   function stopMotionGif() {
-    let gifs = $(this).attr("data-state");
-    if (gifs === "still") {
+    let state = $(this).attr("data-state");
+    if (state === "still") {
       $(this).attr("src", $(this).attr("data-animate"));
       $(this).attr("data-state", "animate");
     } else {
