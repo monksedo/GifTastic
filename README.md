@@ -5,7 +5,7 @@ Create a web page that populates with gifs using GIPHY API, Javascript, jQuery a
 HTML, CSS, Javascript, jQuery
 
 ## Start the app
-[Click here to run](https://monksedo.github.io/GifTastic/)
+[Click here to run](https://tvn9.github.io/GifTastic/)
 
 ## Code Snippets
 ### Javascript part 1 - 
